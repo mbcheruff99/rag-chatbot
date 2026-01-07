@@ -19,7 +19,6 @@ history = [
 ]
 
 while user_input != "exit":
-    # RAG Step #1: Retrieve relevant chunks from vector DB
     results = dense_index.search(
         namespace="first-aid",
         query={
@@ -30,19 +29,18 @@ while user_input != "exit":
         }
     )
 
-    # RAG Step #2: Convert chunks into one long string of documentation
+
     documentation = ""
 
     for hit in results['result']['hits']:
         fields = hit.get('fields')
-        chunk_text = fields.get('chunk_text')
+        chunk_text = fields.get('chunk-text')
 
         if chunk_text:
           documentation += chunk_text
 
             
 
-    # RAG Step #3: Insert retrieved documentation into prompt
     history += [
         {"role": "user",
          "content": f"""Here are excerpts from a first-aid web browser documentation: {documentation}. Use whatever

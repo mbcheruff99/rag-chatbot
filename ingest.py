@@ -28,7 +28,7 @@ print(f"Found {len(chunks)} chunks")
 records = []
 for i, chunk in enumerate(chunks):
     records.append({
-        "id": f"chunk_{i}",
+        "id": f"chunk-{i}",
         "chunk_text": chunk,
         "manual": "flamehamster"
     })

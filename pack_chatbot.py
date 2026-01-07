@@ -4,7 +4,6 @@ from openai import OpenAI
 load_dotenv()
 llm = OpenAI()
 
-# Load the entire documentation into memory
 with open("first-aid.md", "r", encoding="utf-8") as file:
     documentation = file.read()
 

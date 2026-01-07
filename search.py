@@ -7,9 +7,8 @@ load_dotenv()
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 dense_index = pc.Index("first-aid-bot")
 
-query = "how do i stop the bleeding from a bullet wound?"
+query = "how to apply a tourniquet to an arm wound?"
 
-# Retrieve relevant chunks from vector DB:
 results = dense_index.search(
     namespace="first-aid",
     query={
@@ -24,7 +23,6 @@ print("Raw results:")
 print(results)
 print("\n" + "="*50 + "\n")
 
-# Convert chunks into one long string of documentation
 documentation = ""
 
 for hit in results['result']['hits']:
